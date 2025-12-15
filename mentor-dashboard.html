@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard - GuidED</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>GuidED</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="navigateMentorPage('home')">Home</a></li>
+                <li><a href="#" onclick="navigateMentorPage('students')">My Students</a></li>
+                <li><a href="#" onclick="navigateMentorPage('schedule')">Schedule</a></li>
+                <li><a href="#" onclick="navigateMentorPage('profile')">My Profile</a></li>
+                <li><a href="#" onclick="mentorLogout()" class="nav-link btn-primary">Logout</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="mentor-dashboard">
+        <!-- Home Page -->
+        <section id="mentorHome" class="dashboard-section">
+            <div class="container">
+                <div class="dashboard-header">
+                    <div class="welcome-section">
+                        <h1>Welcome back, <span id="mentorName">Mentor</span>! 👋</h1>
+                        <p>Guide and inspire the next generation</p>
+                    </div>
+                </div>
+
+                <!-- Mentor Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Active Students</h3>
+                            <p class="stat-value">12</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Hours Mentored</h3>
+                            <p class="stat-value">48</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Rating</h3>
+                            <p class="stat-value">4.8/5</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Sessions This Month</h3>
+                            <p class="stat-value">8</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-links-grid">
+                    <div class="quick-link-card" onclick="currentPage='students'; loadMentorPage()">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>My Students</h3>
+                        <p>Manage your students</p>
+                    </div>
+                    <div class="quick-link-card" onclick="currentPage='schedule'; loadMentorPage()">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>My Schedule</h3>
+                        <p>View upcoming sessions</p>
+                    </div>
+                    <div class="quick-link-card" onclick="currentPage='profile'; loadMentorPage()">
+                        <i class="fas fa-user-edit"></i>
+                        <h3>My Profile</h3>
+                        <p>Update your profile</p>
+                    </div>
+                    <div class="quick-link-card">
+                        <i class="fas fa-message"></i>
+                        <h3>Messages</h3>
+                        <p>Chat with students</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Students -->
+        <section id="mentorStudents" class="dashboard-section hidden">
+            <div class="container">
+                <h2>My Students</h2>
+                <p class="subtitle">Manage and support your mentees</p>
+
+                <div class="students-grid">
+                    <div class="student-card">
+                        <div class="student-header">
+                            <div class="student-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="student-info">
+                                <h3>Arjun Patel</h3>
+                                <p>CSE - 2nd Year</p>
+                            </div>
+                        </div>
+                        <div class="student-details">
+                            <p><strong>Goal:</strong> Web Development</p>
+                            <p><strong>Last Session:</strong> 2 days ago</p>
+                            <p><strong>Progress:</strong> 70%</p>
+                        </div>
+                        <button class="btn btn-primary">Schedule Session</button>
+                    </div>
+
+                    <div class="student-card">
+                        <div class="student-header">
+                            <div class="student-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="student-info">
+                                <h3>Pooja Singh</h3>
+                                <p>ECE - 1st Year</p>
+                            </div>
+                        </div>
+                        <div class="student-details">
+                            <p><strong>Goal:</strong> Machine Learning</p>
+                            <p><strong>Last Session:</strong> 1 week ago</p>
+                            <p><strong>Progress:</strong> 45%</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="openScheduleSessionModal()">Schedule Session</button>
+                    </div>
+
+                    <div class="student-card">
+                        <div class="student-header">
+                            <div class="student-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="student-info">
+                                <h3>Rohit Sharma</h3>
+                                <p>CSE - 3rd Year</p>
+                            </div>
+                        </div>
+                        <div class="student-details">
+                            <p><strong>Goal:</strong> Data Structures</p>
+                            <p><strong>Last Session:</strong> Today</p>
+                            <p><strong>Progress:</strong> 85%</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="openScheduleSessionModal()">Schedule Session</button>
+                    </div>
+
+                    <div class="student-card">
+                        <div class="student-header">
+                            <div class="student-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="student-info">
+                                <h3>Nikita Verma</h3>
+                                <p>EE - 2nd Year</p>
+                            </div>
+                        </div>
+                        <div class="student-details">
+                            <p><strong>Goal:</strong> Placement Prep</p>
+                            <p><strong>Last Session:</strong> 3 days ago</p>
+                            <p><strong>Progress:</strong> 60%</p>
+                        </div>
+                        <button class="btn btn-primary" onclick="openScheduleSessionModal()">Schedule Session</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule -->
+        <section id="mentorSchedule" class="dashboard-section hidden">
+            <div class="container">
+                <h2>My Schedule</h2>
+                <p class="subtitle">Manage your mentoring sessions</p>
+
+                <!-- Schedule Filters -->
+                <div class="schedule-filters">
+                    <div class="filter-group">
+                        <label>View:</label>
+                        <select id="scheduleFilter" onchange="filterSchedule()">
+                            <option value="all">All Sessions</option>
+                            <option value="upcoming">Upcoming</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="addNewSession()">
+                        <i class="fas fa-plus"></i> Schedule New Session
+                    </button>
+                </div>
+
+                <!-- Sessions Stats -->
+                <div class="sessions-stats">
+                    <div class="stat-mini">
+                        <span class="stat-label">Today</span>
+                        <span class="stat-number">2</span>
+                    </div>
+                    <div class="stat-mini">
+                        <span class="stat-label">This Week</span>
+                        <span class="stat-number">8</span>
+                    </div>
+                    <div class="stat-mini">
+                        <span class="stat-label">Total Hours</span>
+                        <span class="stat-number">24</span>
+                    </div>
+                    <div class="stat-mini">
+                        <span class="stat-label">Completion Rate</span>
+                        <span class="stat-number">98%</span>
+                    </div>
+                </div>
+
+                <!-- Upcoming Sessions -->
+                <div class="upcoming-sessions-section">
+                    <h3><i class="fas fa-calendar-check"></i> Upcoming Sessions</h3>
+                    
+                    <div class="session-item-new" onclick="showSessionDetail('Today', '4:00 PM', 'Arjun Patel', 'CSE - 2nd Year', 'Web Development - JavaScript', '1 hour', 'Video Call', 'Confirmed', 'https://meet.google.com/xyz-abc-def', '123456', 'Google Meet', 'This session is for reviewing JavaScript concepts. Student has basic knowledge and needs help with advanced concepts like callbacks and promises.')">
+                        <div class="session-header">
+                            <div class="date-box-new">
+                                <span class="day">Today</span>
+                                <span class="time">4:00 PM</span>
+                            </div>
+                            <div class="session-title">
+                                <h4>Arjun Patel</h4>
+                                <p class="student-info">CSE - 2nd Year</p>
+                            </div>
+                        </div>
+                        <p class="session-topic">
+                            <i class="fas fa-book"></i> Web Development - JavaScript
+                        </p>
+                        <div class="session-meta-new">
+                            <span><i class="fas fa-clock"></i> 1 hour</span>
+                            <span><i class="fas fa-video"></i> Video Call</span>
+                        </div>
+                        <div class="session-actions-new">
+                            <button class="btn btn-sm btn-primary" onclick="joinSession('Arjun Patel')">
+                                <i class="fas fa-phone-alt"></i> Join Call
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="rescheduleSession('Arjun Patel')">
+                                <i class="fas fa-calendar"></i> Reschedule
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="cancelSession('Arjun Patel')">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="session-item-new" onclick="showSessionDetail('Tomorrow', '2:00 PM', 'Pooja Singh', 'ECE - 1st Year', 'Machine Learning - Neural Networks', '1.5 hours', 'Video Call', 'Confirmed', 'https://meet.google.com/abc-def-xyz', '654321', 'Google Meet', 'Student needs help understanding neural network concepts including forward propagation, backpropagation, and various activation functions.')">
+                        <div class="session-header">
+                            <div class="date-box-new">
+                                <span class="day">Tomorrow</span>
+                                <span class="time">2:00 PM</span>
+                            </div>
+                            <div class="session-title">
+                                <h4>Pooja Singh</h4>
+                                <p class="student-info">ECE - 1st Year</p>
+                            </div>
+                        </div>
+                        <p class="session-topic">
+                            <i class="fas fa-brain"></i> Machine Learning - Neural Networks
+                        </p>
+                        <div class="session-meta-new">
+                            <span><i class="fas fa-clock"></i> 1.5 hours</span>
+                            <span><i class="fas fa-video"></i> Video Call</span>
+                        </div>
+                        <div class="session-actions-new">
+                            <button class="btn btn-sm btn-primary" onclick="joinSession('Pooja Singh')">
+                                <i class="fas fa-phone-alt"></i> Join Call
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="rescheduleSession('Pooja Singh')">
+                                <i class="fas fa-calendar"></i> Reschedule
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="cancelSession('Pooja Singh')">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="session-item-new" onclick="showSessionDetail('Dec 18', '5:30 PM', 'Rohit Sharma', 'CSE - 3rd Year', 'DSA - Tree Traversal', '1 hour', 'Video Call', 'Confirmed', 'https://meet.google.com/def-xyz-abc', '789012', 'Google Meet', 'Session focused on tree data structures. Student needs practice with different traversal methods including inorder, preorder, postorder and level-order traversals.')">
+                        <div class="session-header">
+                            <div class="date-box-new">
+                                <span class="day">Dec 18</span>
+                                <span class="time">5:30 PM</span>
+                            </div>
+                            <div class="session-title">
+                                <h4>Rohit Sharma</h4>
+                                <p class="student-info">CSE - 3rd Year</p>
+                            </div>
+                        </div>
+                        <p class="session-topic">
+                            <i class="fas fa-code"></i> DSA - Tree Traversal
+                        </p>
+                        <div class="session-meta-new">
+                            <span><i class="fas fa-clock"></i> 1 hour</span>
+                            <span><i class="fas fa-video"></i> Video Call</span>
+                        </div>
+                        <div class="session-actions-new">
+                            <button class="btn btn-sm btn-primary" onclick="joinSession('Rohit Sharma')">
+                                <i class="fas fa-phone-alt"></i> Join Call
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="rescheduleSession('Rohit Sharma')">
+                                <i class="fas fa-calendar"></i> Reschedule
+                            </button>
+                            <button class="btn btn-sm btn-outline" onclick="cancelSession('Rohit Sharma')">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Schedule -->
+                <div class="weekly-schedule-section">
+                    <h3><i class="fas fa-calendar-alt"></i> Weekly Schedule</h3>
+                    <div class="week-schedule-grid">
+                        <div class="day-slot">
+                            <h4>Monday</h4>
+                            <div class="time-slots">
+                                <div class="time-slot">
+                                    <span class="slot-time">10:00 AM</span>
+                                    <span class="slot-student">Arjun</span>
+                                    <span class="slot-status confirmed">Confirmed</span>
+                                </div>
+                                <div class="time-slot">
+                                    <span class="slot-time">3:00 PM</span>
+                                    <span class="slot-student">Nikita</span>
+                                    <span class="slot-status pending">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-slot">
+                            <h4>Tuesday</h4>
+                            <div class="time-slots">
+                                <div class="time-slot">
+                                    <span class="slot-time">2:00 PM</span>
+                                    <span class="slot-student">Pooja</span>
+                                    <span class="slot-status confirmed">Confirmed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-slot">
+                            <h4>Wednesday</h4>
+                            <div class="time-slots">
+                                <div class="time-slot">
+                                    <span class="slot-time">4:00 PM</span>
+                                    <span class="slot-student">Rohit</span>
+                                    <span class="slot-status confirmed">Confirmed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-slot">
+                            <h4>Thursday</h4>
+                            <div class="time-slots">
+                                <p class="no-slots">No sessions</p>
+                            </div>
+                        </div>
+                        <div class="day-slot">
+                            <h4>Friday</h4>
+                            <div class="time-slots">
+                                <div class="time-slot">
+                                    <span class="slot-time">11:00 AM</span>
+                                    <span class="slot-student">Vikram</span>
+                                    <span class="slot-status confirmed">Confirmed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-slot">
+                            <h4>Saturday</h4>
+                            <div class="time-slots">
+                                <div class="time-slot">
+                                    <span class="slot-time">5:00 PM</span>
+                                    <span class="slot-student">Priya</span>
+                                    <span class="slot-status confirmed">Confirmed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="day-slot">
+                            <h4>Sunday</h4>
+                            <div class="time-slots">
+                                <p class="no-slots">Day off</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile -->
+        <section id="mentorProfile" class="dashboard-section hidden">
+            <div class="container">
+                <h2>My Profile</h2>
+
+                <div class="profile-section">
+                    <h3>Basic Information</h3>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="mentorNameInput" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="mentorEmailInput" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label>Expertise</label>
+                        <input type="text" id="mentorExpertiseInput" placeholder="Your area of expertise" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Experience (Years)</label>
+                        <input type="number" id="mentorExperienceInput" placeholder="Years of experience" disabled>
+                    </div>
+                    <button class="btn btn-primary" onclick="saveMentorProfile()">Save Changes</button>
+                </div>
+
+                <div class="profile-section">
+                    <h3>Bio</h3>
+                    <div class="form-group">
+                        <label>About You</label>
+                        <textarea placeholder="Tell students about yourself..." rows="5"></textarea>
+                    </div>
+                    <button class="btn btn-primary">Save Bio</button>
+                </div>
+
+                <div class="profile-section">
+                    <h3>Availability</h3>
+                    <div class="availability-grid">
+                        <div class="availability-item">
+                            <label>
+                                <input type="checkbox" checked> Monday (2:00 PM - 7:00 PM)
+                            </label>
+                        </div>
+                        <div class="availability-item">
+                            <label>
+                                <input type="checkbox" checked> Wednesday (3:00 PM - 8:00 PM)
+                            </label>
+                        </div>
+                        <div class="availability-item">
+                            <label>
+                                <input type="checkbox"> Friday (4:00 PM - 9:00 PM)
+                            </label>
+                        </div>
+                        <div class="availability-item">
+                            <label>
+                                <input type="checkbox"> Saturday (10:00 AM - 5:00 PM)
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Save Availability</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Session Detail Modal -->
+    <div id="sessionModal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeSessionModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="session-detail">
+                <div class="detail-header">
+                    <div class="detail-date-box">
+                        <span class="detail-day" id="detailDay">Today</span>
+                        <span class="detail-time" id="detailTime">4:00 PM</span>
+                    </div>
+                    <div class="detail-title">
+                        <h2 id="detailStudentName">Arjun Patel</h2>
+                        <p id="detailStudentInfo">CSE - 2nd Year</p>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Session Details</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">
+                                <i class="fas fa-book"></i> Topic
+                            </span>
+                            <span class="detail-value" id="detailTopic">Web Development - JavaScript</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">
+                                <i class="fas fa-clock"></i> Duration
+                            </span>
+                            <span class="detail-value" id="detailDuration">1 hour</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">
+                                <i class="fas fa-video"></i> Type
+                            </span>
+                            <span class="detail-value" id="detailType">Video Call</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">
+                                <i class="fas fa-check-circle"></i> Status
+                            </span>
+                            <span class="detail-value" id="detailStatus">Confirmed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Meeting Information</h3>
+                    <div class="meeting-info">
+                        <p><strong>Meeting Link:</strong> <span id="meetingLink">https://meet.google.com/xyz-abc-def</span></p>
+                        <p><strong>Password:</strong> <span id="meetingPassword">123456</span></p>
+                        <p><strong>Platform:</strong> <span id="meetingPlatform">Google Meet</span></p>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3>Student Notes</h3>
+                    <p id="studentNotes">This session is for reviewing JavaScript concepts. Student has basic knowledge and needs help with advanced concepts like callbacks and promises.</p>
+                </div>
+
+                <div class="detail-actions">
+                    <button class="btn btn-primary" onclick="joinSessionDetail()">
+                        <i class="fas fa-phone-alt"></i> Join Call Now
+                    </button>
+                    <button class="btn btn-outline" onclick="rescheduleSessionDetail()">
+                        <i class="fas fa-calendar"></i> Reschedule
+                    </button>
+                    <button class="btn btn-outline" onclick="cancelSessionDetail()">
+                        <i class="fas fa-times"></i> Cancel Session
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast"></div>
+
+    <!-- Schedule Session Modal -->
+    <div id="scheduleSessionModal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeScheduleSessionModal()"><i class="fas fa-times"></i></button>
+            <div class="session-detail">
+                <div class="detail-header">
+                    <h2>Schedule Session</h2>
+                </div>
+
+                <form id="scheduleSessionForm" class="schedule-form">
+                    <div class="form-group">
+                        <label for="scheduleStudentSelect">Select Student *</label>
+                        <select id="scheduleStudentSelect" required>
+                            <option value="">Choose a student...</option>
+                            <option value="STU001|Arjun Patel">Arjun Patel (STU001)</option>
+                            <option value="STU002|Priya Singh">Priya Singh (STU002)</option>
+                            <option value="STU003|Rahul Sharma">Rahul Sharma (STU003)</option>
+                            <option value="STU004|Neha Gupta">Neha Gupta (STU004)</option>
+                            <option value="STU005|Vikram Kumar">Vikram Kumar (STU005)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="scheduleDate">Date *</label>
+                            <input type="date" id="scheduleDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="scheduleTime">Time *</label>
+                            <input type="time" id="scheduleTime" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scheduleTopic">Topic *</label>
+                        <input type="text" id="scheduleTopic" placeholder="e.g., Web Development - JavaScript" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="scheduleDuration">Duration *</label>
+                        <select id="scheduleDuration" required>
+                            <option value="">Select duration...</option>
+                            <option value="30 minutes">30 minutes</option>
+                            <option value="1 hour">1 hour</option>
+                            <option value="1.5 hours">1.5 hours</option>
+                            <option value="2 hours">2 hours</option>
+                        </select>
+                    </div>
+
+                    <div class="detail-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-calendar-check"></i> Schedule Session
+                        </button>
+                        <button type="button" class="btn btn-outline" onclick="closeScheduleSessionModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="mentor-dashboard.js"></script>
+</body>
+</html>

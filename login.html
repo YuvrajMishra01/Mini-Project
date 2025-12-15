@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuidED - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="login-page">
+    <!-- Theme Toggle -->
+    <button class="theme-toggle theme-toggle-navbar" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Main Login Section -->
+    <section id="mainLogin" class="main-login-section">
+        <div class="login-container" >
+            <div class="login-content">
+                <div class="login-header">
+                    <div class="logo-large">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h1>GuidED</h1>
+                    <p>Your Student Success Platform</p>
+                </div>
+
+                <div class="login-options">
+                    <button class="login-option-btn" onclick="goToStudentLogin()">
+                        <div class="option-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="option-text">
+                            <h3>Student Login</h3>
+                            <p>Access study materials and mentorship</p>
+                        </div>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <button class="login-option-btn" onclick="goToMentorLogin()">
+                        <div class="option-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="option-text">
+                            <h3>Mentor Login</h3>
+                            <p>Guide students and share your expertise</p>
+                        </div>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+                <div class="login-footer">
+                    <p>New to GuidED? <a href="index.html">Visit Homepage</a></p>
+                </div>
+            </div>
+
+            <div class="login-illustration">
+                <div class="illustration-content">
+                    <i class="fas fa-book-open"></i>
+                    <i class="fas fa-lightbulb"></i>
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mentor Preview Section -->
+        <div class="mentor-preview-section">
+            <h2>Meet Our Top Mentors</h2>
+            <p class="preview-subtitle">Login to connect with experienced mentors and accelerate your learning</p>
+            
+            <div class="mentor-preview-grid">
+                <div class="mentor-preview-card">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Arjun Kumar</h3>
+                    <p class="mentor-expertise">Web Development</p>
+                    <p class="mentor-experience">5 years experience</p>
+                    <div class="mentor-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                    </div>
+                    <button class="btn btn-sm btn-outline" onclick="goToStudentLogin()">
+                        Login to Connect
+                    </button>
+                </div>
+
+                <div class="mentor-preview-card">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Priya Sharma</h3>
+                    <p class="mentor-expertise">AI & Machine Learning</p>
+                    <p class="mentor-experience">4 years experience</p>
+                    <div class="mentor-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                    </div>
+                    <button class="btn btn-sm btn-outline" onclick="goToStudentLogin()">
+                        Login to Connect
+                    </button>
+                </div>
+
+                <div class="mentor-preview-card">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Vikram Singh</h3>
+                    <p class="mentor-expertise">Data Structures & Algorithms</p>
+                    <p class="mentor-experience">6 years experience</p>
+                    <div class="mentor-tags">
+                        <span class="tag">DSA</span>
+                        <span class="tag">C++</span>
+                    </div>
+                    <button class="btn btn-sm btn-outline" onclick="goToStudentLogin()">
+                        Login to Connect
+                    </button>
+                </div>
+
+                <div class="mentor-preview-card">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Neha Gupta</h3>
+                    <p class="mentor-expertise">Blockchain Development</p>
+                    <p class="mentor-experience">3 years experience</p>
+                    <div class="mentor-tags">
+                        <span class="tag">Solidity</span>
+                        <span class="tag">Web3</span>
+                    </div>
+                    <button class="btn btn-sm btn-outline" onclick="goToStudentLogin()">
+                        Login to Connect
+                    </button>
+                </div>
+            </div>
+
+            <div class="mentor-preview-cta">
+                <p>Want to explore more mentors? <strong>Login to see the complete list!</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Login Section -->
+    <section id="studentAuth" class="student-auth-section hidden">
+        <div class="auth-container">
+            <button class="back-btn" onclick="goToMainLogin()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+
+            <div class="auth-box">
+                <div class="auth-header">
+                    <h2>Student Login</h2>
+                    <p>Enter your details to access your dashboard</p>
+                </div>
+
+                <form id="studentLoginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="studentCollege">College Name *</label>
+                        <select id="studentCollege" required>
+                            <option value="">Select your college...</option>
+                            <option value="IITD">IITD</option>
+                            <option value="BITS Pilani">BITS Pilani</option>
+                            <option value="NIT Delhi">NIT Delhi</option>
+                            <option value="Delhi University">Delhi University</option>
+                            <option value="IITK">IITK</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentEmail">Email Address *</label>
+                        <input type="email" id="studentEmail" placeholder="Enter your email" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentPassword">Password *</label>
+                        <input type="password" id="studentPassword" placeholder="Enter your password" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" onclick="alert('Sign up feature coming soon!')">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentor Login Section -->
+    <section id="mentorAuth" class="mentor-auth-section hidden">
+        <div class="auth-container">
+            <button class="back-btn" onclick="goToMainLogin()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+
+            <div class="auth-box">
+                <div class="auth-header">
+                    <h2>Mentor Login</h2>
+                    <p>Enter your details to access mentor dashboard</p>
+                </div>
+
+                <form id="mentorLoginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="mentorCollege">College Name *</label>
+                        <select id="mentorCollege" required>
+                            <option value="">Select your college...</option>
+                            <option value="IITD">IITD</option>
+                            <option value="BITS Pilani">BITS Pilani</option>
+                            <option value="IITB">IITB</option>
+                            <option value="Delhi University">Delhi University</option>
+                            <option value="NIT Delhi">NIT Delhi</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mentorEmail">Email Address *</label>
+                        <input type="email" id="mentorEmail" placeholder="Enter your email" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mentorPassword">Password *</label>
+                        <input type="password" id="mentorPassword" placeholder="Enter your password" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Login</button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>New mentor? <a href="#" onclick="alert('Registration feature coming soon!')">Register</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast"></div>
+
+    <script src="data.js"></script>
+    <script src="login-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuidED - Your Student Success Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>GuidED</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#mentors" class="nav-link">Mentors</a></li>
+                <li><a href="login.html" class="nav-link btn-primary">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <section id="home" class="hero-section">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Your Complete Study Companion</h1>
+                <p class="hero-subtitle">Access study materials, connect with mentors, track your progress, and prepare for placements - all in one place.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="navigateTo('dashboard')">Get Started</button>
+                    <button class="btn btn-secondary" onclick="navigateTo('features')">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-illustration">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose GuidED?</h2>
+            <p class="section-subtitle">Everything you need to succeed in your academic journey</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Study Materials</h3>
+                    <p>Access notes, PYQs, and resources for all subjects and semesters</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Career Roadmaps</h3>
+                    <p>Structured learning paths for Web Dev, AI/ML, DSA, and more</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Mentorship</h3>
+                    <p>Connect with experienced mentors from top colleges</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Placement Prep</h3>
+                    <p>Mock interviews, resume builder, and company-specific preparation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>Join a vibrant community of learners and achievers</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Students Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"GuidED helped me land my dream job at Google. The mentorship and placement prep resources were invaluable!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>IIT Delhi, CS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The roadmaps are amazing! I went from zero coding knowledge to building full-stack apps in 6 months."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Rahul Kumar</h4>
+                            <p>NIT Trichy, ECE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Best platform for exam preparation. All notes and PYQs in one place made studying so much easier!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Ananya Patel</h4>
+                            <p>BITS Pilani, EEE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auth Page -->
+    <section id="auth" class="auth-section hidden">
+        <div class="container auth-container">
+            <div class="auth-box">
+                <div class="auth-header">
+                    <h2 id="authTitle">Welcome Back</h2>
+                    <p id="authSubtitle">Login to continue your journey</p>
+                </div>
+                <form id="authForm" class="auth-form">
+                    <div class="form-group" id="nameGroup">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <span class="error-message"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="authButton">Login</button>
+                </form>
+                <div class="auth-switch">
+                    <p id="switchText">Don't have an account? <a href="#" id="switchLink">Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Page -->
+    <section id="dashboard" class="dashboard-section hidden">
+        <div class="container dashboard-container">
+            <div class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome back, <span id="userName">Student</span>! 👋</h1>
+                    <p>Here's what's happening with your studies today</p>
+                </div>
+                <button class="btn btn-secondary" onclick="navigateTo('home')">Logout</button>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <div class="quick-link-card" onclick="navigateTo('study-material')">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Notes & PYQs</h3>
+                    <p>Access study materials</p>
+                </div>
+                <div class="quick-link-card" onclick="navigateTo('roadmap')">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Skill Roadmaps</h3>
+                    <p>Follow learning paths</p>
+                </div>
+                <div class="quick-link-card" onclick="navigateTo('mentors')">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Mentorship</h3>
+                    <p>Connect with mentors</p>
+                </div>
+                <div class="quick-link-card" onclick="navigateTo('placement')">
+                    <div class="quick-link-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Placement Prep</h3>
+                    <p>Prepare for interviews</p>
+                </div>
+            </div>
+
+            <!-- Progress Cards -->
+            <div class="progress-section">
+                <h2 class="section-title">Your Progress</h2>
+                <div class="progress-grid">
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h3>Study Streak</h3>
+                            <span class="progress-value">12 days</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <p class="progress-subtitle">Keep it up! </p>
+                    </div>
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h3>Courses Completed</h3>
+                            <span class="progress-value">8/15</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 53%"></div>
+                        </div>
+                        <p class="progress-subtitle">53% complete</p>
+                    </div>
+                    <div class="progress-card">
+                        <div class="progress-header">
+                            <h3>Mentor Sessions</h3>
+                            <span class="progress-value">5</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <p class="progress-subtitle">This month</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Tasks -->
+            <div class="tasks-section">
+                <h2 class="section-title">Upcoming Tasks</h2>
+                <div class="tasks-list">
+                    <div class="task-item">
+                        <div class="task-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="task-content">
+                            <h4>Complete DSA Module 3</h4>
+                            <p>Due in 2 days</p>
+                        </div>
+                        <span class="task-status status-pending">Pending</span>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="task-content">
+                            <h4>Mentor Session with Yuvraj</h4>
+                            <p>Tomorrow at 4:00 PM</p>
+                        </div>
+                        <span class="task-status status-scheduled">Scheduled</span>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="task-content">
+                            <h4>Update Resume</h4>
+                            <p>Due in 5 days</p>
+                        </div>
+                        <span class="task-status status-pending">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Page -->
+    <section id="roadmap" class="roadmap-section hidden">
+        <div class="container">
+            <div class="page-header">
+                <h1>Career Roadmaps</h1>
+                <p>Choose your path and start your journey</p>
+                <button class="btn btn-secondary" onclick="navigateTo('dashboard')">Back to Dashboard</button>
+            </div>
+            <div class="roadmap-grid">
+                <div class="roadmap-card" data-roadmap="webdev">
+                    <div class="roadmap-header">
+                        <div class="roadmap-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                    </div>
+                    <p>Master frontend, backend, and full-stack development</p>
+                    <button class="btn btn-outline expand-roadmap">View Roadmap</button>
+                    <div class="roadmap-steps hidden">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <h4>HTML & CSS Basics</h4>
+                                <p>Learn the fundamentals of web structure and styling</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <h4>JavaScript Essentials</h4>
+                                <p>Master programming logic and DOM manipulation</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <h4>React/Vue Framework</h4>
+                                <p>Build modern single-page applications</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <h4>Backend with Node.js</h4>
+                                <p>Create APIs and server-side applications</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <h4>Database & Deployment</h4>
+                                <p>Learn MongoDB, SQL, and cloud deployment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-card" data-roadmap="aiml">
+                    <div class="roadmap-header">
+                        <div class="roadmap-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI & Machine Learning</h3>
+                    </div>
+                    <p>Dive into artificial intelligence and data science</p>
+                    <button class="btn btn-outline expand-roadmap">View Roadmap</button>
+                    <div class="roadmap-steps hidden">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <h4>Python Programming</h4>
+                                <p>Master Python for data science and ML</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <h4>Data Analysis & Visualization</h4>
+                                <p>Learn NumPy, Pandas, and Matplotlib</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <h4>Machine Learning Algorithms</h4>
+                                <p>Understand supervised and unsupervised learning</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <h4>Deep Learning & Neural Networks</h4>
+                                <p>Explore TensorFlow and PyTorch</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <h4>Real-world Projects</h4>
+                                <p>Build and deploy ML models</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-card" data-roadmap="dsa">
+                    <div class="roadmap-header">
+                        <div class="roadmap-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>Data Structures & Algorithms</h3>
+                    </div>
+                    <p>Ace coding interviews with strong DSA fundamentals</p>
+                    <button class="btn btn-outline expand-roadmap">View Roadmap</button>
+                    <div class="roadmap-steps hidden">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <h4>Arrays & Strings</h4>
+                                <p>Master basic data structures</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <h4>Linked Lists & Stacks</h4>
+                                <p>Understand linear data structures</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <h4>Trees & Graphs</h4>
+                                <p>Learn hierarchical and network structures</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <h4>Dynamic Programming</h4>
+                                <p>Solve complex optimization problems</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <h4>Advanced Algorithms</h4>
+                                <p>Master greedy, divide-and-conquer techniques</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="roadmap-card" data-roadmap="blockchain">
+                    <div class="roadmap-header">
+                        <div class="roadmap-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3>Blockchain Development</h3>
+                    </div>
+                    <p>Build decentralized applications and smart contracts</p>
+                    <button class="btn btn-outline expand-roadmap">View Roadmap</button>
+                    <div class="roadmap-steps hidden">
+                        <div class="step-item">
+                            <span class="step-number">1</span>
+                            <div class="step-content">
+                                <h4>Blockchain Fundamentals</h4>
+                                <p>Understand distributed ledger technology</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">2</span>
+                            <div class="step-content">
+                                <h4>Solidity Programming</h4>
+                                <p>Learn smart contract development</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">3</span>
+                            <div class="step-content">
+                                <h4>Ethereum & Web3.js</h4>
+                                <p>Build decentralized applications</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">4</span>
+                            <div class="step-content">
+                                <h4>DeFi & NFTs</h4>
+                                <p>Explore decentralized finance and tokens</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <span class="step-number">5</span>
+                            <div class="step-content">
+                                <h4>Security & Best Practices</h4>
+                                <p>Learn secure smart contract development</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentorship Page -->
+    <section id="mentors" class="mentorship-section hidden">
+        <div class="container">
+            <div class="page-header">
+                <h1>Find Your Mentor</h1>
+                <p>Connect with experienced professionals and students</p>
+                <button class="btn btn-secondary" onclick="navigateTo('dashboard')">Back to Dashboard</button>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label>Domain</label>
+                    <select id="domainFilter" class="filter-select">
+                        <option value="all">All Domains</option>
+                        <option value="webdev">Web Development</option>
+                        <option value="aiml">AI/ML</option>
+                        <option value="dsa">DSA</option>
+                        <option value="blockchain">Blockchain</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>College</label>
+                    <select id="collegeFilter" class="filter-select">
+                        <option value="all">All Colleges</option>
+                        <option value="iit">IIT</option>
+                        <option value="nit">NIT</option>
+                        <option value="bits">BITS</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Experience</label>
+                    <select id="experienceFilter" class="filter-select">
+                        <option value="all">All Levels</option>
+                        <option value="student">Student Mentor</option>
+                        <option value="professional">Professional</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Mentor Cards -->
+            <div class="mentor-grid" id="mentorGrid">
+                <div class="mentor-card" data-domain="webdev" data-college="iit" data-experience="professional">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3>Yuvraj</h3>
+                        <p class="mentor-college">IIT Delhi, CS</p>
+                        <div class="mentor-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">React</span>
+                        </div>
+                        <p class="mentor-bio">Senior Software Engineer at Microsoft with 5+ years of experience</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookSession('Rajesh Kumar')">Book Session</button>
+                </div>
+
+                <div class="mentor-card" data-domain="aiml" data-college="nit" data-experience="professional">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3>Priya Sharma</h3>
+                        <p class="mentor-college">NIT Trichy, CS</p>
+                        <div class="mentor-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <p class="mentor-bio">Data Scientist at Google, specializing in ML and AI</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookSession('Priya Sharma')">Book Session</button>
+                </div>
+
+                <div class="mentor-card" data-domain="dsa" data-college="bits" data-experience="student">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3>Arjun Mehta</h3>
+                        <p class="mentor-college">BITS Pilani, CS</p>
+                        <div class="mentor-tags">
+                            <span class="tag">DSA</span>
+                            <span class="tag">Competitive Programming</span>
+                        </div>
+                        <p class="mentor-bio">4th year student, Codeforces Expert, Amazon intern</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookSession('Arjun Mehta')">Book Session</button>
+                </div>
+
+                <div class="mentor-card" data-domain="blockchain" data-college="iit" data-experience="professional">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3>Neha Singh</h3>
+                        <p class="mentor-college">IIT Bombay, CS</p>
+                        <div class="mentor-tags">
+                            <span class="tag">Blockchain</span>
+                            <span class="tag">Solidity</span>
+                        </div>
+                        <p class="mentor-bio">Blockchain Developer at Polygon, Web3 enthusiast</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookSession('Neha Singh')">Book Session</button>
+                </div>
+
+                <div class="mentor-card" data-domain="webdev" data-college="nit" data-experience="student">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3>Vikram Patel</h3>
+                        <p class="mentor-college">NIT Surathkal, IT</p>
+                        <div class="mentor-tags">
+                            <span class="tag">Full Stack</span>
+                            <span class="tag">Node.js</span>
+                        </div>
+                        <p class="mentor-bio">Final year student, Flipkart intern, Open source contributor</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookSession('Vikram Patel')">Book Session</button>
+                </div>
+
+                <div class="mentor-card" data-domain="aiml" data-college="iit" data-experience="professional">
+                    <div class="mentor-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="mentor-info">
+                        <h3>Ananya Reddy</h3>
+                        <p class="mentor-college">IIT Madras, CS</p>
+                        <div class="mentor-tags">
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">NLP</span>
+                        </div>
+                        <p class="mentor-bio">Research Scientist at OpenAI, PhD in ML</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="bookSession('Ananya Reddy')">Book Session</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Material Page -->
+    <section id="study-material" class="study-material-section hidden">
+        <div class="container">
+            <div class="page-header">
+                <h1>Study Materials</h1>
+                <p>Access notes and previous year questions</p>
+                <button class="btn btn-secondary" onclick="navigateTo('dashboard')">Back to Dashboard</button>
+            </div>
+
+            <div class="material-selectors">
+                <div class="selector-group">
+                    <label>Branch</label>
+                    <select id="branchSelect" class="selector">
+                        <option value="">Select Branch</option>
+                        <option value="cse">Computer Science</option>
+                        <option value="ece">Electronics & Communication</option>
+                        <option value="ee">Electrical Engineering</option>
+                        <option value="me">Mechanical Engineering</option>
+                        <option value="ce">Civil Engineering</option>
+                    </select>
+                </div>
+                <div class="selector-group">
+                    <label>Semester</label>
+                    <select id="semesterSelect" class="selector">
+                        <option value="">Select Semester</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                        <option value="7">Semester 7</option>
+                        <option value="8">Semester 8</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="materialsContainer" class="materials-container hidden">
+                <h2 class="section-title">Available Materials</h2>
+                <div class="materials-list">
+                    <p style="text-align: center; padding: 40px; color: var(--text-light);">
+                        Select a branch and semester to view available materials.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placement Prep Page -->
+    <section id="placement" class="placement-section hidden">
+        <div class="container">
+            <div class="page-header">
+                <h1>Placement Preparation</h1>
+                <p>Prepare for interviews and land your dream job</p>
+                <button class="btn btn-secondary" onclick="navigateTo('dashboard')">Back to Dashboard</button>
+            </div>
+            <p style="text-align: center; padding: 40px; color: var(--text-light);">
+                Mock interviews, resume builder, and company-specific prep coming soon!
+            </p>
+        </div>
+    </section>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

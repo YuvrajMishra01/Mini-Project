@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - GuidED</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>GuidED</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="navigateStudentPage('home')">Home</a></li>
+                <li><a href="#" onclick="navigateStudentPage('materials')">Study Materials</a></li>
+                <li><a href="#" onclick="navigateStudentPage('mentors')">Find Mentors</a></li>
+                <li><a href="#" onclick="navigateStudentPage('progress')">My Progress</a></li>
+                <li>
+                    <button class="notification-btn" onclick="showStudentNotifications()" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span id="notificationBadge" class="badge" style="display: none;">0</span>
+                    </button>
+                </li>
+                <li><a href="#" onclick="studentLogout()" class="nav-link btn-primary">Logout</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="student-dashboard">
+        <!-- Home Page -->
+        <section id="studentHome" class="dashboard-section">
+            <div class="container">
+                <div class="dashboard-header">
+                    <div class="welcome-section">
+                        <h1>Welcome back, <span id="studentName">Student</span>! 👋</h1>
+                        <p>Here's what's happening with your studies</p>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Study Streak</h3>
+                            <p class="stat-value">12 days</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Progress</h3>
+                            <p class="stat-value">65%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Mentor Sessions</h3>
+                            <p class="stat-value">5</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Achievements</h3>
+                            <p class="stat-value">8</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="quick-links-grid">
+                    <div class="quick-link-card" onclick="currentPage='materials'; loadStudentPage()">
+                        <i class="fas fa-book-open"></i>
+                        <h3>Study Materials</h3>
+                        <p>Access notes and PYQs</p>
+                    </div>
+                    <div class="quick-link-card" onclick="currentPage='mentors'; loadStudentPage()">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>Find Mentors</h3>
+                        <p>Connect with experts</p>
+                    </div>
+                    <div class="quick-link-card" onclick="currentPage='progress'; loadStudentPage()">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Track Progress</h3>
+                        <p>View your growth</p>
+                    </div>
+                    <div class="quick-link-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Placement Prep</h3>
+                        <p>Get job ready</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Materials -->
+        <section id="studentMaterials" class="dashboard-section hidden">
+            <div class="container">
+                <h2>Study Materials</h2>
+                <div class="materials-selectors">
+                    <div class="selector-group">
+                        <label>Branch: <span id="displayBranch"></span></label>
+                    </div>
+                    <div class="selector-group">
+                        <label>Year: <span id="displayYear"></span></label>
+                    </div>
+                </div>
+
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <div class="material-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h3>Data Structures</h3>
+                        <p>Complete notes on DSA</p>
+                        <button class="btn btn-primary">Download</button>
+                    </div>
+                    <div class="material-card">
+                        <div class="material-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h3>Previous Year Papers</h3>
+                        <p>Last 5 years papers</p>
+                        <button class="btn btn-primary">Download</button>
+                    </div>
+                    <div class="material-card">
+                        <div class="material-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Video Lectures</h3>
+                        <p>Expert video tutorials</p>
+                        <button class="btn btn-primary">Watch</button>
+                    </div>
+                    <div class="material-card">
+                        <div class="material-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Code Snippets</h3>
+                        <p>Ready-to-use code samples</p>
+                        <button class="btn btn-primary">View</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Find Mentors -->
+        <section id="studentMentors" class="dashboard-section hidden">
+            <div class="container">
+                <h2>Find Your Mentor</h2>
+                <p class="subtitle">Connect with experienced mentors for guidance</p>
+
+                <div class="mentors-grid">
+                    <div class="mentor-card">
+                        <div class="mentor-header">
+                            <div class="mentor-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="mentor-info">
+                                <h3>Rajesh Kumar</h3>
+                                <p>IIT Delhi, CS</p>
+                                <p class="role">Senior Software Engineer at Google</p>
+                            </div>
+                        </div>
+                        <div class="mentor-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">React</span>
+                        </div>
+                        <button class="btn btn-primary">Book Session</button>
+                    </div>
+
+                    <div class="mentor-card">
+                        <div class="mentor-header">
+                            <div class="mentor-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="mentor-info">
+                                <h3>Priya Sharma</h3>
+                                <p>NIT Trichy, CS</p>
+                                <p class="role">Data Scientist at Google</p>
+                            </div>
+                        </div>
+                        <div class="mentor-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <button class="btn btn-primary">Book Session</button>
+                    </div>
+
+                    <div class="mentor-card">
+                        <div class="mentor-header">
+                            <div class="mentor-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="mentor-info">
+                                <h3>Arjun Singh</h3>
+                                <p>BITS Pilani, CS</p>
+                                <p class="role">Competitive Programmer</p>
+                            </div>
+                        </div>
+                        <div class="mentor-tags">
+                            <span class="tag">DSA</span>
+                            <span class="tag">Competitive Programming</span>
+                        </div>
+                        <button class="btn btn-primary">Book Session</button>
+                    </div>
+
+                    <div class="mentor-card">
+                        <div class="mentor-header">
+                            <div class="mentor-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="mentor-info">
+                                <h3>Neha Singh</h3>
+                                <p>IIT Bombay, CS</p>
+                                <p class="role">Blockchain Developer</p>
+                            </div>
+                        </div>
+                        <div class="mentor-tags">
+                            <span class="tag">Blockchain</span>
+                            <span class="tag">Web3</span>
+                        </div>
+                        <button class="btn btn-primary">Book Session</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress -->
+        <section id="studentProgress" class="dashboard-section hidden">
+            <div class="container">
+                <h2>Your Progress</h2>
+
+                <div class="progress-cards">
+                    <div class="progress-card">
+                        <h3>Study Streak</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <p>12 days - Keep it up! 🔥</p>
+                    </div>
+
+                    <div class="progress-card">
+                        <h3>Courses Completed</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                        <p>8 out of 15 courses - 65% complete</p>
+                    </div>
+
+                    <div class="progress-card">
+                        <h3>Mentor Sessions</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                        <p>5 sessions completed this month</p>
+                    </div>
+
+                    <div class="progress-card">
+                        <h3>Placement Readiness</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                        <p>45% - Keep improving!</p>
+                    </div>
+                </div>
+
+                <div class="tasks-section">
+                    <h3>Upcoming Tasks</h3>
+                    <div class="tasks-list">
+                        <div class="task-item">
+                            <div class="task-check">
+                                <input type="checkbox">
+                            </div>
+                            <div class="task-content">
+                                <h4>Complete DSA Module 3</h4>
+                                <p>Due in 2 days</p>
+                            </div>
+                            <span class="task-status pending">Pending</span>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-check">
+                                <input type="checkbox">
+                            </div>
+                            <div class="task-content">
+                                <h4>Mentor Session with Rajesh</h4>
+                                <p>Tomorrow at 4:00 PM</p>
+                            </div>
+                            <span class="task-status scheduled">Scheduled</span>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-check">
+                                <input type="checkbox">
+                            </div>
+                            <div class="task-content">
+                                <h4>Update Resume</h4>
+                                <p>Due in 5 days</p>
+                            </div>
+                            <span class="task-status pending">Pending</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast"></div>
+
+    <!-- Notifications Popup -->
+    <div id="notificationsPopup" class="notifications-popup hidden">
+        <div class="notifications-container">
+            <div class="notifications-header">
+                <h3>Notifications</h3>
+                <button class="close-btn" onclick="closeStudentNotifications()">&times;</button>
+            </div>
+            <div class="notifications-list" id="notificationsList">
+                <p class="empty-state">No notifications yet</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="student-dashboard.js"></script>
+</body>
+</html>

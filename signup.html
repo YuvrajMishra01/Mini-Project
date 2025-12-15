@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - GuidED</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>GuidED</span>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="signup-container">
+        <!-- Main Signup Selection -->
+        <section id="mainSignup" class="signup-section">
+            <div class="signup-box">
+                <div class="signup-header">
+                    <h1>Join GuidED</h1>
+                    <p>Choose your role to get started</p>
+                </div>
+
+                <div class="signup-options">
+                    <button class="signup-option-btn" onclick="goToStudentSignup()">
+                        <div class="option-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Student</h3>
+                        <p>Learn from experienced mentors</p>
+                    </button>
+
+                    <button class="signup-option-btn" onclick="goToMentorSignup()">
+                        <div class="option-icon">
+                            <i class="fas fa-chalkboard-user"></i>
+                        </div>
+                        <h3>Mentor</h3>
+                        <p>Share your knowledge & expertise</p>
+                    </button>
+                </div>
+
+                <div class="signup-footer">
+                    <p>Already have an account? <a href="login.html">Login</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Signup Section -->
+        <section id="studentSignup" class="signup-section hidden">
+            <div class="signup-box">
+                <button class="back-btn" onclick="goToMainSignup()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+
+                <div class="signup-header">
+                    <h2>Student Sign Up</h2>
+                    <p>Create your account to access mentors</p>
+                </div>
+
+                <form id="studentSignupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="signupStudentName">Full Name *</label>
+                        <input type="text" id="signupStudentName" placeholder="Enter your full name" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupStudentEmail">Email Address *</label>
+                        <input type="email" id="signupStudentEmail" placeholder="Enter your email" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupStudentCollege">College Name *</label>
+                        <select id="signupStudentCollege" required>
+                            <option value="">Select your college...</option>
+                            <option value="IITD">IITD</option>
+                            <option value="BITS Pilani">BITS Pilani</option>
+                            <option value="NIT Delhi">NIT Delhi</option>
+                            <option value="Delhi University">Delhi University</option>
+                            <option value="IITK">IITK</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupStudentBranch">Branch *</label>
+                            <select id="signupStudentBranch" required>
+                                <option value="">Select Branch</option>
+                                <option value="cse">Computer Science & Engineering</option>
+                                <option value="ece">Electronics & Communication</option>
+                                <option value="ee">Electrical Engineering</option>
+                                <option value="me">Mechanical Engineering</option>
+                                <option value="ce">Civil Engineering</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="signupStudentYear">Year *</label>
+                            <select id="signupStudentYear" required>
+                                <option value="">Select Year</option>
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                            </select>
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupStudentPassword">Password *</label>
+                        <input type="password" id="signupStudentPassword"
+                            placeholder="Create a password (min 6 characters)" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupStudentConfirmPassword">Confirm Password *</label>
+                        <input type="password" id="signupStudentConfirmPassword" placeholder="Confirm your password"
+                            required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="studentTerms" required>
+                        <label for="studentTerms" style="display: inline; margin-left: 0.5rem;">I agree to the Terms &
+                            Conditions</label>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+
+                <div class="signup-footer">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentor Signup Section -->
+        <section id="mentorSignup" class="signup-section hidden">
+            <div class="signup-box">
+                <button class="back-btn" onclick="goToMainSignup()">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+
+                <div class="signup-header">
+                    <h2>Mentor Sign Up</h2>
+                    <p>Join as a mentor and start teaching</p>
+                </div>
+
+                <form id="mentorSignupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="signupMentorName">Full Name *</label>
+                        <input type="text" id="signupMentorName" placeholder="Enter your full name" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupMentorEmail">Email Address *</label>
+                        <input type="email" id="signupMentorEmail" placeholder="Enter your email" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupMentorCollege">College Name *</label>
+                        <select id="signupMentorCollege" required>
+                            <option value="">Select your college...</option>
+                            <option value="IITD">IITD</option>
+                            <option value="BITS Pilani">BITS Pilani</option>
+                            <option value="IITB">IITB</option>
+                            <option value="Delhi University">Delhi University</option>
+                            <option value="NIT Delhi">NIT Delhi</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupMentorExpertise">Expertise *</label>
+                        <select id="signupMentorExpertise" required>
+                            <option value="">Select Expertise</option>
+                            <option value="webdev">Web Development</option>
+                            <option value="aiml">AI & Machine Learning</option>
+                            <option value="dsa">Data Structures & Algorithms</option>
+                            <option value="blockchain">Blockchain Development</option>
+                            <option value="mobile">Mobile Development</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupMentorExperience">Years of Experience *</label>
+                        <input type="number" id="signupMentorExperience" placeholder="e.g., 5" min="0" max="50"
+                            required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupMentorQualifications">Qualifications *</label>
+                        <textarea id="signupMentorQualifications" placeholder="e.g., B.Tech CSE, M.Tech" rows="3"
+                            required></textarea>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupMentorPassword">Password *</label>
+                        <input type="password" id="signupMentorPassword"
+                            placeholder="Create a password (min 6 characters)" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupMentorConfirmPassword">Confirm Password *</label>
+                        <input type="password" id="signupMentorConfirmPassword" placeholder="Confirm your password"
+                            required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="mentorTerms" required>
+                        <label for="mentorTerms" style="display: inline; margin-left: 0.5rem;">I agree to the Terms &
+                            Conditions</label>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+
+                <div class="signup-footer">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast"></div>
+
+    <script src="data.js"></script>
+    <script src="signup-script.js"></script>
+</body>
+
+</html>
