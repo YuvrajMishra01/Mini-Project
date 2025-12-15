@@ -1,4 +1,4 @@
-﻿// ====== THEME MANAGEMENT ======
+﻿﻿// ====== THEME MANAGEMENT ======
 function initTheme() {
     const savedTheme = localStorage.getItem("guidedTheme");
     if (savedTheme === "dark") {

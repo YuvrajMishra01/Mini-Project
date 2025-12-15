@@ -138,7 +138,13 @@ function loadStudentNotifications() {
     const studentId = localStorage.getItem('guidedUserId');
     if (!studentId) return;
     
-    const notifications = getStudentNotifications(studentId);
+    // const notifications = getStudentNotifications(studentId);
+    let notifications = getStudentNotifications(studentId);
+
+// mark all as read
+notifications = notifications.map(n => ({ ...n, read: true }));
+localStorage.setItem(`notifications_${studentId}`, JSON.stringify(notifications));
+
     updateNotificationBadge(notifications);
 }
 
@@ -146,7 +152,13 @@ function showStudentNotifications() {
     const studentId = localStorage.getItem('guidedUserId');
     if (!studentId) return;
     
-    const notifications = getStudentNotifications(studentId);
+    // const notifications = getStudentNotifications(studentId);
+    let notifications = getStudentNotifications(studentId);
+
+// mark all as read
+notifications = notifications.map(n => ({ ...n, read: true }));
+localStorage.setItem(`notifications_${studentId}`, JSON.stringify(notifications));
+
     const popup = document.getElementById('notificationsPopup');
     const list = document.getElementById('notificationsList');
     
@@ -197,3 +209,68 @@ function deleteStudentNotification(notifId) {
     showStudentNotifications();
     updateNotificationBadge(notifications);
 }
+function getStudentNotifications(studentId) {
+    const data = localStorage.getItem(`notifications_${studentId}`);
+    return data ? JSON.parse(data) : [];
+}
+function bookSession(mentorName, topic) {
+    const studentId = localStorage.getItem("guidedUserId");
+    const studentName = localStorage.getItem("guidedUser");
+
+    if (!studentId) {
+        showNotification("Please login again", "error");
+        return;
+    }
+
+    // Temporary mini-project behavior
+    showNotification(
+        `Request sent to ${mentorName} for ${topic} session`,
+        "info"
+    );
+
+    // OPTIONAL: send notification to mentor (for demo)
+    const mentorNotif = {
+        id: Date.now().toString(),
+        type: "request",
+        title: "New Session Request",
+        message: `${studentName} requested a session on ${topic}`,
+        timestamp: new Date().toLocaleString(),
+        read: false
+    };
+
+    const key = `mentor_notifications_${mentorName}`;
+    const notifications = JSON.parse(localStorage.getItem(key)) || [];
+    notifications.push(mentorNotif);
+    localStorage.setItem(key, JSON.stringify(notifications));
+}
+function bookSession(mentorName, topic) {
+    const studentName = localStorage.getItem("guidedUser");
+    const studentId = localStorage.getItem("guidedUserId");
+
+    if (!studentId) {
+        showNotification("Please login again", "error");
+        return;
+    }
+
+    // Demo behavior for mini project
+    showNotification(
+        `Session request sent to ${mentorName} for ${topic}`,
+        "info"
+    );
+
+    // (Optional) Save request for mentor
+    const request = {
+        id: Date.now().toString(),
+        studentName: studentName,
+        mentorName: mentorName,
+        topic: topic,
+        timestamp: new Date().toLocaleString(),
+        status: "pending"
+    };
+
+    let requests = JSON.parse(localStorage.getItem("sessionRequests")) || [];
+    requests.push(request);
+    localStorage.setItem("sessionRequests", JSON.stringify(requests));
+}
+
+

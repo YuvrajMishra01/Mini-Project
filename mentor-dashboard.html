@@ -128,7 +128,7 @@
                             <p><strong>Last Session:</strong> 2 days ago</p>
                             <p><strong>Progress:</strong> 70%</p>
                         </div>
-                        <button class="btn btn-primary">Schedule Session</button>
+                        <button class="btn btn-primary" onclick="openScheduleSessionModal()">Schedule Session</button>
                     </div>
 
                     <div class="student-card">
@@ -206,7 +206,7 @@
                             <option value="completed">Completed</option>
                         </select>
                     </div>
-                    <button class="btn btn-primary" onclick="addNewSession()">
+                    <button class="btn btn-primary" onclick="openScheduleSessionModal()">
                         <i class="fas fa-plus"></i> Schedule New Session
                     </button>
                 </div>
@@ -565,10 +565,10 @@
                         <select id="scheduleStudentSelect" required>
                             <option value="">Choose a student...</option>
                             <option value="STU001|Arjun Patel">Arjun Patel (STU001)</option>
-                            <option value="STU002|Priya Singh">Priya Singh (STU002)</option>
-                            <option value="STU003|Rahul Sharma">Rahul Sharma (STU003)</option>
+                            <option value="STU002|Pooja Singh">Pooja Singh (STU002)</option>
+                            <option value="STU003|Rohit Sharma">Rohit Sharma (STU003)</option>
                             <option value="STU004|Neha Gupta">Neha Gupta (STU004)</option>
-                            <option value="STU005|Vikram Kumar">Vikram Kumar (STU005)</option>
+                            <!-- <option value="STU005|Vikram Kumar">Vikram Kumar (STU005)</option> -->
                         </select>
                     </div>
 

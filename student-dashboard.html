@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
@@ -169,6 +171,8 @@
                 <p class="subtitle">Connect with experienced mentors for guidance</p>
 
                 <div class="mentors-grid">
+
+                    <!-- Rajesh Kumar -->
                     <div class="mentor-card">
                         <div class="mentor-header">
                             <div class="mentor-avatar">
@@ -184,9 +188,12 @@
                             <span class="tag">Web Development</span>
                             <span class="tag">React</span>
                         </div>
-                        <button class="btn btn-primary">Book Session</button>
+                        <button class="btn btn-primary" onclick="bookSession('Rajesh Kumar', 'Web Development')">
+                            Book Session
+                        </button>
                     </div>
 
+                    <!-- Priya Sharma -->
                     <div class="mentor-card">
                         <div class="mentor-header">
                             <div class="mentor-avatar">
@@ -202,9 +209,12 @@
                             <span class="tag">Machine Learning</span>
                             <span class="tag">Python</span>
                         </div>
-                        <button class="btn btn-primary">Book Session</button>
+                        <button class="btn btn-primary" onclick="bookSession('Priya Sharma', 'Machine Learning')">
+                            Book Session
+                        </button>
                     </div>
 
+                    <!-- Arjun Singh -->
                     <div class="mentor-card">
                         <div class="mentor-header">
                             <div class="mentor-avatar">
@@ -220,9 +230,12 @@
                             <span class="tag">DSA</span>
                             <span class="tag">Competitive Programming</span>
                         </div>
-                        <button class="btn btn-primary">Book Session</button>
+                        <button class="btn btn-primary" onclick="bookSession('Arjun Singh', 'DSA')">
+                            Book Session
+                        </button>
                     </div>
 
+                    <!-- Neha Singh -->
                     <div class="mentor-card">
                         <div class="mentor-header">
                             <div class="mentor-avatar">
@@ -238,88 +251,98 @@
                             <span class="tag">Blockchain</span>
                             <span class="tag">Web3</span>
                         </div>
-                        <button class="btn btn-primary">Book Session</button>
+                        <button class="btn btn-primary" onclick="bookSession('Neha Singh', 'Blockchain')">
+                            Book Session
+                        </button>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- Progress -->
-        <section id="studentProgress" class="dashboard-section hidden">
-            <div class="container">
-                <h2>Your Progress</h2>
 
-                <div class="progress-cards">
-                    <div class="progress-card">
-                        <h3>Study Streak</h3>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 75%"></div>
-                        </div>
-                        <p>12 days - Keep it up! 🔥</p>
-                    </div>
+        <!-- <button class="btn btn-primary">Book Session</button> -->
+    </div>
+    </div>
+    </div>
+    </section>
 
-                    <div class="progress-card">
-                        <h3>Courses Completed</h3>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 65%"></div>
-                        </div>
-                        <p>8 out of 15 courses - 65% complete</p>
-                    </div>
+    <!-- Progress -->
+    <section id="studentProgress" class="dashboard-section hidden">
+        <div class="container">
+            <h2>Your Progress</h2>
 
-                    <div class="progress-card">
-                        <h3>Mentor Sessions</h3>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 100%"></div>
-                        </div>
-                        <p>5 sessions completed this month</p>
+            <div class="progress-cards">
+                <div class="progress-card">
+                    <h3>Study Streak</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
                     </div>
-
-                    <div class="progress-card">
-                        <h3>Placement Readiness</h3>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 45%"></div>
-                        </div>
-                        <p>45% - Keep improving!</p>
-                    </div>
+                    <p>12 days - Keep it up! 🔥</p>
                 </div>
 
-                <div class="tasks-section">
-                    <h3>Upcoming Tasks</h3>
-                    <div class="tasks-list">
-                        <div class="task-item">
-                            <div class="task-check">
-                                <input type="checkbox">
-                            </div>
-                            <div class="task-content">
-                                <h4>Complete DSA Module 3</h4>
-                                <p>Due in 2 days</p>
-                            </div>
-                            <span class="task-status pending">Pending</span>
+                <div class="progress-card">
+                    <h3>Courses Completed</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                    <p>8 out of 15 courses - 65% complete</p>
+                </div>
+
+                <div class="progress-card">
+                    <h3>Mentor Sessions</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                    <p>5 sessions completed this month</p>
+                </div>
+
+                <div class="progress-card">
+                    <h3>Placement Readiness</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <p>45% - Keep improving!</p>
+                </div>
+            </div>
+
+            <div class="tasks-section">
+                <h3>Upcoming Tasks</h3>
+                <div class="tasks-list">
+                    <div class="task-item">
+                        <div class="task-check">
+                            <input type="checkbox">
                         </div>
-                        <div class="task-item">
-                            <div class="task-check">
-                                <input type="checkbox">
-                            </div>
-                            <div class="task-content">
-                                <h4>Mentor Session with Rajesh</h4>
-                                <p>Tomorrow at 4:00 PM</p>
-                            </div>
-                            <span class="task-status scheduled">Scheduled</span>
+                        <div class="task-content">
+                            <h4>Complete DSA Module 3</h4>
+                            <p>Due in 2 days</p>
                         </div>
-                        <div class="task-item">
-                            <div class="task-check">
-                                <input type="checkbox">
-                            </div>
-                            <div class="task-content">
-                                <h4>Update Resume</h4>
-                                <p>Due in 5 days</p>
-                            </div>
-                            <span class="task-status pending">Pending</span>
+                        <span class="task-status pending">Pending</span>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-check">
+                            <input type="checkbox">
                         </div>
+                        <div class="task-content">
+                            <h4>Mentor Session with Rajesh</h4>
+                            <p>Tomorrow at 4:00 PM</p>
+                        </div>
+                        <span class="task-status scheduled">Scheduled</span>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-check">
+                            <input type="checkbox">
+                        </div>
+                        <div class="task-content">
+                            <h4>Update Resume</h4>
+                            <p>Due in 5 days</p>
+                        </div>
+                        <span class="task-status pending">Pending</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     </div>
 
     <!-- Notification Toast -->
@@ -341,4 +364,5 @@
     <script src="data.js"></script>
     <script src="student-dashboard.js"></script>
 </body>
+
 </html>

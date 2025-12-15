@@ -337,3 +337,40 @@ function formatDate(dateString) {
     const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString('en-US', options);
 }
+function scheduleSession(studentId, topic, date, time, duration) {
+    const newNotification = {
+        id: Date.now().toString(),
+        type: "session",
+        title: "Session Scheduled",
+        message: `${topic} on ${date} at ${time} (${duration})`,
+        timestamp: new Date().toLocaleString(),
+        read: false
+    };
+
+    const key = `notifications_${studentId}`;
+    const notifications = JSON.parse(localStorage.getItem(key)) || [];
+    notifications.push(newNotification);
+
+    localStorage.setItem(key, JSON.stringify(notifications));
+
+    alert("Session scheduled successfully!");
+}
+function acceptSession(studentId, topic) {
+    const mentorName = localStorage.getItem('guidedMentor');
+
+    const notification = {
+        id: Date.now().toString(),
+        type: "session",
+        title: "Session Approved",
+        message: `${mentorName} approved your ${topic} session request`,
+        timestamp: new Date().toLocaleString(),
+        read: false
+    };
+
+    const key = `notifications_${studentId}`;
+    const notifications = JSON.parse(localStorage.getItem(key)) || [];
+    notifications.push(notification);
+    localStorage.setItem(key, JSON.stringify(notifications));
+
+    showNotification("Session accepted & student notified", "success");
+}
